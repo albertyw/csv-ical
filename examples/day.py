@@ -12,7 +12,7 @@ from datetime import datetime
 
 convert = Convert()
 convert.CSV_FILE_LOCATION = 'examples/BostonCruiseTerminalSchedule.csv'
-convert.SAVE_LOCATION = 'examples/example.ics'
+convert.SAVE_LOCATION = 'examples/day.ics'
 convert.HEADER_COLUMNS_TO_SKIP = 2
 convert.NAME = 3
 convert.START_DATE = 2
