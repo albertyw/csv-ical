@@ -5,56 +5,52 @@ There are a bunch of configurable variables
 
 import csv
 from icalendar import Calendar, Event
-from datetime import datetime, date
 
-CSV_FILE_LOCATION = 'examples/BostonCruiseTerminalSchedule.csv'
-SAVE_LOCATION = 'example.ics'
-HEADER_COLUMNS_TO_SKIP = 2
-
-# The variables below refer to the column indexes in the CSV
-NAME = 3
-DATE = 2
-DESCRIPTION = 6
-LOCATION = 9
-
-# Read the csv file
-#
-def read_csv():
-    csv_reader = csv.reader(open(CSV_FILE_LOCATION, 'rb'))
-    i = 0
-    csv_data = []
-    for row in csv_reader:
-        if i < HEADER_COLUMNS_TO_SKIP:
-            i += 1
-            continue
-        csv_data.append(row)
-    return csv_data
-    
-
-# Make iCal entries
-#
-def make_ical(csv_data):
-    cal = Calendar()
-    for row in csv_data:
-        event = Event()
-        event.add('summary', row[NAME])
-        event.add('dtstart', row[DATE])
-        event.add('dtend', row[DATE])
-        event.add('description', row[DESCRIPTION])
-        event.add('location', row[LOCATION])
-        cal.add_component(event)
-    return cal
-    
-# Save the calendar instance to a file
-#
-def save_ical(cal):
-    f = open(SAVE_LOCATION, 'wb')
-    f.write(cal.to_ical())
-    f.close()
-    
-    
-csv_data = read_csv()
-for row in csv_data:
-    row[DATE] = datetime.strptime(row[DATE], '%m/%d/%y').date()
-cal = make_ical(csv_data)
-save_ical(cal)
+class Convert():
+    # Initialize some configs
+    def __init__(self):
+        self.CSV_FILE_LOCATION = None
+        self.SAVE_LOCATION = None
+        self.HEADER_COLUMNS_TO_SKIP = 0
+        
+        # The variables below refer to the column indexes in the CSV
+        self.NAME = 0
+        self.DATE = 1
+        self.DESCRIPTION = 2
+        self.LOCATION = 3
+        
+        self.csv_data = []
+        self.cal = Calendar()
+        
+    # Read the csv file
+    #
+    def read_csv(self):
+        csv_reader = csv.reader(open(self.CSV_FILE_LOCATION, 'rb'))
+        i = 0
+        for row in csv_reader:
+            if i < self.HEADER_COLUMNS_TO_SKIP:
+                i += 1
+                continue
+            self.csv_data.append(row)
+        return self.csv_data
+        
+    # Make iCal entries
+    #
+    def make_ical(self):
+        for row in self.csv_data:
+            event = Event()
+            event.add('summary', row[self.NAME])
+            event.add('dtstart', row[self.DATE])
+            event.add('dtend', row[self.DATE])
+            event.add('description', row[self.DESCRIPTION])
+            event.add('location', row[self.LOCATION])
+            self.cal.add_component(event)
+        return self.cal
+        
+    # Save the calendar instance to a file
+    #
+    def save_ical(self):
+        f = open(self.SAVE_LOCATION, 'wb')
+        f.write(self.cal.to_ical())
+        f.close()
+        
