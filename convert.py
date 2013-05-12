@@ -15,7 +15,8 @@ class Convert():
         
         # The variables below refer to the column indexes in the CSV
         self.NAME = 0
-        self.DATE = 1
+        self.START_DATE = 1
+        self.END_DATE = 1
         self.DESCRIPTION = 2
         self.LOCATION = 3
         
@@ -40,8 +41,8 @@ class Convert():
         for row in self.csv_data:
             event = Event()
             event.add('summary', row[self.NAME])
-            event.add('dtstart', row[self.DATE])
-            event.add('dtend', row[self.DATE])
+            event.add('dtstart', row[self.START_DATE])
+            event.add('dtend', row[self.END_DATE])
             event.add('description', row[self.DESCRIPTION])
             event.add('location', row[self.LOCATION])
             self.cal.add_component(event)
