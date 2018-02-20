@@ -9,8 +9,6 @@ from icalendar import Calendar, Event
 
 class ConvertCSVToICal():
     def __init__(self):
-        self.CSV_FILE_LOCATION = None
-        self.SAVE_LOCATION = None
         self.HEADER_COLUMNS_TO_SKIP = 0
 
         # The variables below refer to the column indexes in the CSV
@@ -23,9 +21,9 @@ class ConvertCSVToICal():
         self.csv_data = []
         self.cal = Calendar()
 
-    def read_csv(self):
+    def read_csv(self, csv_location):
         """ Read the csv file """
-        with open(self.CSV_FILE_LOCATION, 'rb') as csv_file:
+        with open(csv_location, 'rb') as csv_file:
             csv_reader = csv.reader(csv_file)
             self.csv_data = list(csv_reader)
         self.csv_data = self.csv_data[self.HEADER_COLUMNS_TO_SKIP:]
@@ -43,7 +41,7 @@ class ConvertCSVToICal():
             self.cal.add_component(event)
         return self.cal
 
-    def save_ical(self):
+    def save_ical(self, ical_location):
         """ Save the calendar instance to a file """
-        with open(self.SAVE_LOCATION, 'wb') as ical_file:
+        with open(ical_location, 'wb') as ical_file:
             ical_file.write(self.cal.to_ical())
