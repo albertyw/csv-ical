@@ -45,6 +45,5 @@ class ConvertCSVToICal():
 
     def save_ical(self):
         """ Save the calendar instance to a file """
-        f = open(self.SAVE_LOCATION, 'wb')
-        f.write(self.cal.to_ical())
-        f.close()
+        with open(self.SAVE_LOCATION, 'wb') as ical_file:
+            ical_file.write(self.cal.to_ical())
