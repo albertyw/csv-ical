@@ -7,10 +7,10 @@ import sys
 sys.path.append('.')
 sys.path.append('../')
 
-from convert import Convert
+from convert import ConvertCSVToICal
 from datetime import datetime
 
-convert = Convert()
+convert = ConvertCSVToICal()
 convert.CSV_FILE_LOCATION = 'examples/BostonCruiseTerminalSchedule.csv'
 convert.SAVE_LOCATION = 'examples/day.ics'
 convert.HEADER_COLUMNS_TO_SKIP = 2

@@ -7,7 +7,7 @@ import csv
 from icalendar import Calendar, Event
 
 
-class Convert():
+class ConvertCSVToICal():
     def __init__(self):
         self.CSV_FILE_LOCATION = None
         self.SAVE_LOCATION = None
