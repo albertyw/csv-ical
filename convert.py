@@ -25,13 +25,10 @@ class ConvertCSVToICal():
 
     def read_csv(self):
         """ Read the csv file """
-        csv_reader = csv.reader(open(self.CSV_FILE_LOCATION, 'rb'))
-        i = 0
-        for row in csv_reader:
-            if i < self.HEADER_COLUMNS_TO_SKIP:
-                i += 1
-                continue
-            self.csv_data.append(row)
+        with open(self.CSV_FILE_LOCATION, 'rb') as csv_file:
+            csv_reader = csv.reader(csv_file)
+            self.csv_data = list(csv_reader)
+        self.csv_data = self.csv_data[self.HEADER_COLUMNS_TO_SKIP:]
         return self.csv_data
 
     def make_ical(self):
