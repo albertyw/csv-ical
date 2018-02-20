@@ -11,21 +11,23 @@ sys.path.append('../')
 from convert import ConvertCSVToICal  # NOQA
 
 convert = ConvertCSVToICal()
-convert.CSV_FILE_LOCATION = 'examples/BostonCruiseTerminalSchedule.csv'
-convert.SAVE_LOCATION = 'examples/day.ics'
-convert.HEADER_COLUMNS_TO_SKIP = 2
-convert.NAME = 3
-convert.START_DATE = 2
-convert.END_DATE = 2
-convert.DESCRIPTION = 6
-convert.LOCATION = 9
+csv_file_location = 'examples/BostonCruiseTerminalSchedule.csv'
+ical_save_location = 'examples/day.ics'
+config = {
+    'HEADER_COLUMNS_TO_SKIP': 2,
+    'CSV_NAME': 3,
+    'CSV_START_DATE': 2,
+    'CSV_END_DATE': 2,
+    'CSV_DESCRIPTION': 6,
+    'CSV_LOCATION': 9,
+}
 
-convert.read_csv()
+convert.read_csv(csv_file_location, config)
 for row in convert.csv_data:
-    row[convert.START_DATE] = datetime.strptime(
-        row[convert.START_DATE],
+    row[config['CSV_START_DATE']] = datetime.strptime(
+        row[config['CSV_START_DATE']],
         '%m/%d/%y'
     ).date()
 
-convert.make_ical()
-convert.save_ical()
+convert.make_ical(config)
+convert.save_ical(ical_save_location)
