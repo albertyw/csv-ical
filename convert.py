@@ -32,6 +32,13 @@ class Convert():
             config[k] = v
         return config
 
+    def read_ical(self, ical_file_location):
+        """ Read the ical file """
+        with open(ical_file_location, 'rb') as ical_file:
+            data = ical_file.read()
+        self.cal = Calendar.from_ical(data)
+        return self.cal
+
     def read_csv(self, csv_location, csv_configs=None):
         """ Read the csv file """
         csv_configs = self._generate_configs_from_default(csv_configs)
@@ -55,7 +62,28 @@ class Convert():
             self.cal.add_component(event)
         return self.cal
 
+    def make_csv(self):
+        """ Make CSV """
+        for event in self.cal.subcomponents:
+            if event.name != 'VEVENT':
+                continue
+            row = [
+                unicode(event['SUMMARY']),
+                event['DTSTART'].dt,
+                event['DTSTART'].dt,
+                unicode(event['DESCRIPTION']),
+                unicode(event['LOCATION']),
+            ]
+            self.csv_data.append(row)
+
     def save_ical(self, ical_location):
         """ Save the calendar instance to a file """
         with open(ical_location, 'wb') as ical_file:
             ical_file.write(self.cal.to_ical())
+
+    def save_csv(self, csv_location):
+        """ Save the csv to a file """
+        with open(csv_location, 'wb') as csv_handle:
+            writer = csv.writer(csv_handle)
+            for row in self.csv_data:
+                writer.writerow(row)
