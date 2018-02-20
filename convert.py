@@ -18,7 +18,7 @@ DEFAULT_CONFIG = {
 }
 
 
-class ConvertCSVToICal():
+class Convert():
     def __init__(self):
         self.csv_data = []
         self.cal = None

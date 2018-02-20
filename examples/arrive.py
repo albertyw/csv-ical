@@ -8,9 +8,9 @@ import sys
 sys.path.append('.')
 sys.path.append('../')
 
-from convert import ConvertCSVToICal  # NOQA
+from convert import Convert  # NOQA
 
-convert = ConvertCSVToICal()
+convert = Convert()
 csv_file_location = 'examples/BostonCruiseTerminalSchedule.csv'
 save_location = 'examples/arrive.ics'
 csv_configs = {
