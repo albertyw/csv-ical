@@ -17,6 +17,7 @@ DEFAULT_CONFIG = {
     'CSV_LOCATION': 3,
 }
 
+
 class ConvertCSVToICal():
     def __init__(self):
         self.csv_data = []
