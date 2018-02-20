@@ -2,15 +2,15 @@
 This file is an exmaple for running the conversion script
 """
 
+from datetime import datetime, timedelta
 import sys
-# Yeah this is a hack
+
 sys.path.append('.')
 sys.path.append('../')
 
-from convert import Convert
-from datetime import datetime, timedelta
+from convert import ConvertCSVToICal  # NOQA
 
-convert = Convert()
+convert = ConvertCSVToICal()
 convert.CSV_FILE_LOCATION = 'examples/BostonCruiseTerminalSchedule.csv'
 convert.SAVE_LOCATION = 'examples/depart.ics'
 convert.HEADER_COLUMNS_TO_SKIP = 2
@@ -26,14 +26,15 @@ while i < len(convert.csv_data):
     row = convert.csv_data[i]
     start_date = row[2] + '-'+row[convert.END_DATE]
     try:
-        row[convert.START_DATE] = datetime.strptime(start_date, '%m/%d/%y-%H:%M')
+        row[convert.START_DATE] = datetime.strptime(
+            start_date,
+            '%m/%d/%y-%H:%M'
+        )
         row[convert.END_DATE] = row[convert.START_DATE]+timedelta(hours=1)
         i += 1
-    except:
+    except ValueError:
         convert.csv_data.pop(i)
     row[convert.NAME] = 'Depart '+row[convert.NAME]
-
-    
 
 convert.make_ical()
 convert.save_ical()
