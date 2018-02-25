@@ -2,7 +2,6 @@
 This file is an exmaple for running the conversion script
 """
 
-from datetime import datetime, timedelta
 import sys
 
 sys.path.append('.')
