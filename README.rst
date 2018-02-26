@@ -1,6 +1,8 @@
 CSV/iCal Converter
 ==================
 
+|PyPI| |Python Versions|
+
 |Codeship Status for albertyw/csv-ical|
 
 
@@ -39,5 +41,9 @@ Publishing
     python setup.py sdist bdist_wheel
     twine upload dist/*
 
+.. |PyPI| image:: https://img.shields.io/pypi/v/csv-ical.svg
+   :target: https://pypi.python.org/pypi/csv-ical/
+.. |Python Versions| image:: https://img.shields.io/pypi/pyversions/csv-ical.svg
+   :target: https://github.com/albertyw/csv-ical
 .. |Codeship Status for albertyw/csv-ical| image:: https://app.codeship.com/projects/2c87dbd0-f84c-0135-ce47-1a2a752165ba/status?branch=master
    :target: https://app.codeship.com/projects/278164
