@@ -1,18 +1,15 @@
 """
-This file is an exmaple for running the conversion script
+Example for converting a CSV file into an iCal file
 """
 
 from datetime import datetime, timedelta
-import sys
 
-sys.path.append('.')
-sys.path.append('../')
+from csv_ical import Convert
 
-from convert import Convert  # NOQA
 
 convert = Convert()
 csv_file_location = 'examples/BostonCruiseTerminalSchedule.csv'
-save_location = 'examples/arrive.ics'
+ical_file_location = 'examples/arrive.ics'
 csv_configs = {
     'HEADER_COLUMNS_TO_SKIP': 2,
     'CSV_NAME': 3,
@@ -39,4 +36,4 @@ while i < len(convert.csv_data):
     row[csv_configs['CSV_NAME']] = 'Arrive '+row[csv_configs['CSV_NAME']]
 
 convert.make_ical(csv_configs)
-convert.save_ical(save_location)
+convert.save_ical(ical_file_location)
