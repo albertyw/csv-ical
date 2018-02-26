@@ -1,5 +1,5 @@
 """
-This file is an exmaple for running the conversion script
+Example for converting a CSV file into an iCal file
 """
 
 from datetime import datetime, timedelta
