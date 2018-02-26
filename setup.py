@@ -20,7 +20,7 @@ setup(
 
     version=about['__version__'],
 
-    description='Easily add common paths to sys.path',
+    description='Convert between CSV and iCal',
     long_description=long_description,
 
     url='https://github.com/albertyw/csv-ical',
