@@ -1,0 +1,12 @@
+[run]
+source=.
+omit =
+  .eggs/*
+  .virtualenv
+  setup.py
+  csv_ical/tests/*
+
+[report]
+exclude_lines =
+  pragma: no cover
+  if __name__ == "__main__":
