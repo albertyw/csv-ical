@@ -3,12 +3,9 @@ This file is an exmaple for running the conversion script
 """
 
 from datetime import datetime, timedelta
-import sys
 
-sys.path.append('.')
-sys.path.append('../')
+from csv_ical import Convert
 
-from convert import Convert  # NOQA
 
 convert = Convert()
 csv_file_location = 'examples/BostonCruiseTerminalSchedule.csv'

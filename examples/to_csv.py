@@ -1,13 +1,9 @@
 """
-This file is an exmaple for running the conversion script
+Example conversion of ical to csv
 """
 
-import sys
+from csv_ical import Convert
 
-sys.path.append('.')
-sys.path.append('../')
-
-from convert import Convert  # NOQA
 
 convert = Convert()
 convert.CSV_FILE_LOCATION = 'examples/BostonCruiseTerminalSchedule.csv'
