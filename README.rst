@@ -3,7 +3,7 @@ CSV/iCal Converter
 
 |PyPI| |Python Versions|
 
-|Codeship Status for albertyw/csv-ical| |Dependency Status|
+|Codeship Status for albertyw/csv-ical| |Dependency Status| |Code Climate| |Test Coverage|
 
 
 A simple script to convert data in CSV format to iCal format and vice versa.
@@ -49,3 +49,7 @@ Publishing
    :target: https://app.codeship.com/projects/278164
 .. |Dependency Status| image:: https://gemnasium.com/badges/github.com/albertyw/csv-ical.svg
    :target: https://gemnasium.com/github.com/albertyw/csv-ical
+.. |Code Climate| image:: https://codeclimate.com/github/albertyw/csv-ical/badges/gpa.svg
+   :target: https://codeclimate.com/github/albertyw/csv-ical
+.. |Test Coverage| image:: https://codeclimate.com/github/albertyw/csv-ical/badges/coverage.svg
+   :target: https://codeclimate.com/github/albertyw/csv-ical/coverage
