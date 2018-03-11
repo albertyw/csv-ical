@@ -37,7 +37,7 @@ class TestConvert(unittest.TestCase):
 
     def test_read_ical(self):
         self.convert.read_ical(EXAMPLE_ICS)
-        self.assertNotEqual(self.convert.cal, None)
+        self.assertTrue(self.convert.cal is not None)
 
     def test_read_csv(self):
         self.convert.read_csv(EXAMPLE_CSV)
@@ -49,7 +49,7 @@ class TestConvert(unittest.TestCase):
         self.convert.csv_data[0][7] = datetime.datetime.now()
         self.convert.csv_data[0][8] = datetime.datetime.now()
         self.convert.make_ical(CSV_CONFIGS)
-        self.assertNotEqual(self.convert.cal, None)
+        self.assertTrue(self.convert.cal is not None)
 
     def test_make_csv(self):
         self.convert.read_ical(EXAMPLE_ICS)
