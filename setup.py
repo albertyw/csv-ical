@@ -55,6 +55,9 @@ setup(
     install_requires=[
         'icalendar>=4.0.1,<5.0.0',
     ],
+    tests_require=[
+        'syspath>=1.0.0,<2.0.0',
+    ],
 
     test_suite="csv_ical.tests",
 
