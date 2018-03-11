@@ -7,8 +7,9 @@ from syspath import get_git_root
 
 from csv_ical import convert
 
-EXAMPLE_ICS = os.path.join(get_git_root(), 'examples', 'arrive.ics')
-EXAMPLE_CSV = os.path.join(get_git_root(), 'examples', 'BostonCruiseTerminalSchedule.csv')
+EXAMPLE_DIR = os.path.join(get_git_root(), 'examples')
+EXAMPLE_ICS = os.path.join(EXAMPLE_DIR, 'arrive.ics')
+EXAMPLE_CSV = os.path.join(EXAMPLE_DIR, 'BostonCruiseTerminalSchedule.csv')
 CSV_CONFIGS = {
     'HEADER_COLUMNS_TO_SKIP': 2,
     'CSV_NAME': 3,
