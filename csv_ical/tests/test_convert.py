@@ -2,6 +2,7 @@ import unittest
 
 from csv_ical import convert
 
+
 class TestConvert(unittest.TestCase):
     def setUp(self):
         self.convert = convert.Convert()
