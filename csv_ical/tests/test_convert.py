@@ -55,8 +55,9 @@ class TestConvert(unittest.TestCase):
         self.convert.make_csv()
         self.assertNotEqual(self.convert.csv_data, [])
 
-    def test_make_csv(self):
+    def test_make_csv_vevent(self):
         self.convert.read_ical(EXAMPLE_ICS)
+        self.convert.cal.subcomponents[0].name = 'asdf'
         self.convert.make_csv()
         self.assertNotEqual(self.convert.csv_data, [])
 
