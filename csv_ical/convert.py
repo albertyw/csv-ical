@@ -43,7 +43,8 @@ class Convert():
         self.cal = Calendar.from_ical(data)
         return self.cal
 
-    def read_csv(self, csv_location, csv_configs=None):  # type: (str, Dict[str, int]) -> List[List[str]]
+    def read_csv(self, csv_location, csv_configs=None):
+        # type: (str, Dict[str, int]) -> List[List[str]]
         """ Read the csv file """
         csv_configs = self._generate_configs_from_default(csv_configs)
         with open(csv_location, 'r') as csv_file:
@@ -52,7 +53,8 @@ class Convert():
         self.csv_data = self.csv_data[csv_configs['HEADER_COLUMNS_TO_SKIP']:]
         return self.csv_data
 
-    def make_ical(self, csv_configs=None):  # type: (Dict[str, int]) -> Calendar
+    def make_ical(self, csv_configs=None):
+        # type: (Dict[str, int]) -> Calendar
         """ Make iCal entries """
         csv_configs = self._generate_configs_from_default(csv_configs)
         self.cal = Calendar()
