@@ -6,6 +6,9 @@ There are a bunch of configurable variables
 import csv
 from icalendar import Calendar, Event
 
+from typing import Dict, List  # NOQA
+
+
 DEFAULT_CONFIG = {
     'HEADER_COLUMNS_TO_SKIP':  0,
 
@@ -20,10 +23,11 @@ DEFAULT_CONFIG = {
 
 class Convert():
     def __init__(self):
-        self.csv_data = []
-        self.cal = None
+        self.csv_data = []  # type: List[List[str]]
+        self.cal = None  # type: Calendar
 
     def _generate_configs_from_default(self, overrides=None):
+        # type: (Dict[str, int]) -> Dict[str, int]
         """ Generate configs by inheriting from defaults """
         config = DEFAULT_CONFIG
         if not overrides:
@@ -32,7 +36,7 @@ class Convert():
             config[k] = v
         return config
 
-    def read_ical(self, ical_file_location):
+    def read_ical(self, ical_file_location):  # type: (str) -> Calendar
         """ Read the ical file """
         with open(ical_file_location, 'r') as ical_file:
             data = ical_file.read()
@@ -40,6 +44,7 @@ class Convert():
         return self.cal
 
     def read_csv(self, csv_location, csv_configs=None):
+        # type: (str, Dict[str, int]) -> List[List[str]]
         """ Read the csv file """
         csv_configs = self._generate_configs_from_default(csv_configs)
         with open(csv_location, 'r') as csv_file:
@@ -49,6 +54,7 @@ class Convert():
         return self.csv_data
 
     def make_ical(self, csv_configs=None):
+        # type: (Dict[str, int]) -> Calendar
         """ Make iCal entries """
         csv_configs = self._generate_configs_from_default(csv_configs)
         self.cal = Calendar()
@@ -62,7 +68,7 @@ class Convert():
             self.cal.add_component(event)
         return self.cal
 
-    def make_csv(self):
+    def make_csv(self):  # type: () -> None
         """ Make CSV """
         for event in self.cal.subcomponents:
             if event.name != 'VEVENT':
@@ -77,13 +83,13 @@ class Convert():
             row = [str(x) for x in row]
             self.csv_data.append(row)
 
-    def save_ical(self, ical_location):
+    def save_ical(self, ical_location):  # type: (str) -> None
         """ Save the calendar instance to a file """
         data = self.cal.to_ical()
         with open(ical_location, 'w') as ical_file:
             ical_file.write(data.decode('utf-8'))
 
-    def save_csv(self, csv_location):
+    def save_csv(self, csv_location):  # type: (str) -> None
         """ Save the csv to a file """
         with open(csv_location, 'w') as csv_handle:
             writer = csv.writer(csv_handle)

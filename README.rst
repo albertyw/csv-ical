@@ -27,7 +27,7 @@ Development
 
     pip install -r requirements-test.txt
     pip install -r requirements-test-python3.txt
-    mypy csv_path/convert.py
+    mypy csv_ical/convert.py --ignore-missing-imports
     coverage run setup.py test
     coverage report -m
     flake8
