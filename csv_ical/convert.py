@@ -76,7 +76,7 @@ class Convert():
             row = [
                 event['SUMMARY'],
                 event['DTSTART'].dt,
-                event['DTSTART'].dt,
+                event['DTEND'].dt,
                 event['DESCRIPTION'],
                 event['LOCATION'],
             ]
