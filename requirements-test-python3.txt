@@ -1,2 +1,2 @@
 # Testing
-mypy==0.580                      # Static typing
+mypy==0.600                      # Static typing
