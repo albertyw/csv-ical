@@ -74,11 +74,11 @@ class Convert():
             if event.name != 'VEVENT':
                 continue
             row = [
-                event['SUMMARY'],
-                event['DTSTART'].dt,
-                event['DTEND'].dt,
-                event['DESCRIPTION'],
-                event['LOCATION'],
+                event.get('SUMMARY'),
+                event.get('DTSTART').dt,
+                event.get('DTEND').dt,
+                event.get('DESCRIPTION'),
+                event.get('LOCATION'),
             ]
             row = [str(x) for x in row]
             self.csv_data.append(row)
