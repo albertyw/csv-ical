@@ -1,6 +1,14 @@
 Changelog
 =========
 
+v1.0.3
+------
+
+ - Fix getting calendar end time
+ - Make converting ical to csv conversion fail gracefully on nonexistent fields
+ - Dependency updates
+
+
 v1.0.2
 ------
 
