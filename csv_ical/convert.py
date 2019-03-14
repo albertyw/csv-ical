@@ -29,7 +29,7 @@ class Convert():
     def _generate_configs_from_default(self, overrides=None):
         # type: (Dict[str, int]) -> Dict[str, int]
         """ Generate configs by inheriting from defaults """
-        config = DEFAULT_CONFIG
+        config = DEFAULT_CONFIG.copy()
         if not overrides:
             overrides = {}
         for k, v in overrides.items():
