@@ -1,6 +1,13 @@
 Changelog
 =========
 
+v1.0.4
+------
+
+ - Update dependencies
+ - Don't allow library to modify global config (@AlbertoMarnetto)
+
+
 v1.0.3
 ------
 
