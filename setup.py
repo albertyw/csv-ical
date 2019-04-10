@@ -13,7 +13,7 @@ with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
 
 about = {}
 with open(path.join(here, 'csv_ical', '__version__.py')) as f:
-        exec(f.read(), about)
+    exec(f.read(), about)
 
 setup(
     name='csv-ical',
