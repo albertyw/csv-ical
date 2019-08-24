@@ -54,6 +54,7 @@ setup(
 
     install_requires=[
         'icalendar>=4.0.1,<5.0.0',
+        'unicodecsv>=0.14.1,<0.15.0',
     ],
     tests_require=[
         'syspath>=1.0.0,<2.0.0',
