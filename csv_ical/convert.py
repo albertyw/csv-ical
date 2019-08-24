@@ -3,10 +3,9 @@ This file reads the CSV file and saves an ical file.
 There are a bunch of configurable variables
 """
 
-import csv
 from icalendar import Calendar, Event
-
 from typing import Dict, List  # NOQA
+import unicodecsv as csv
 
 
 DEFAULT_CONFIG = {
@@ -38,8 +37,8 @@ class Convert():
 
     def read_ical(self, ical_file_location):  # type: (str) -> Calendar
         """ Read the ical file """
-        with open(ical_file_location, 'r', encoding="utf-8") as ical_file:
-            data = ical_file.read()
+        with open(ical_file_location, 'rb') as ical_file:
+            data = ical_file.read().decode('utf-8')
         self.cal = Calendar.from_ical(data)
         return self.cal
 
@@ -47,8 +46,8 @@ class Convert():
         # type: (str, Dict[str, int]) -> List[List[str]]
         """ Read the csv file """
         csv_configs = self._generate_configs_from_default(csv_configs)
-        with open(csv_location, 'r', encoding="utf-8") as csv_file:
-            csv_reader = csv.reader(csv_file)
+        with open(csv_location, 'rb') as csv_file:
+            csv_reader = csv.reader(csv_file, encoding='utf-8')
             self.csv_data = list(csv_reader)
         self.csv_data = self.csv_data[csv_configs['HEADER_COLUMNS_TO_SKIP']:]
         return self.csv_data
@@ -86,14 +85,12 @@ class Convert():
     def save_ical(self, ical_location):  # type: (str) -> None
         """ Save the calendar instance to a file """
         data = self.cal.to_ical()
-        with open(ical_location, 'w', encoding="utf-8", newline='') \
-                as ical_file:
-            ical_file.write(data.decode('utf-8'))
+        with open(ical_location, 'wb') as ical_file:
+            ical_file.write(data)
 
     def save_csv(self, csv_location):  # type: (str) -> None
         """ Save the csv to a file """
-        with open(csv_location, 'w', encoding="utf-8", newline='') \
-                as csv_handle:
-            writer = csv.writer(csv_handle)
+        with open(csv_location, 'wb') as csv_handle:
+            writer = csv.writer(csv_handle, encoding="utf-8")
             for row in self.csv_data:
-                writer.writerow(row)
+                writer.writerow([r.strip() for r in row])
