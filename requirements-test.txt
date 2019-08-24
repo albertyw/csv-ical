@@ -1,5 +1,5 @@
 # Testing
-coverage==4.5.3                  # Test coverage
+coverage==4.5.4                  # Test coverage
 flake8==3.7.7                    # Python linting
 mock==2.0.0                      # Test mocks
 typing==3.6.6                    # Type hints
