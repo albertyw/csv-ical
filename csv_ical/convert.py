@@ -86,12 +86,14 @@ class Convert():
     def save_ical(self, ical_location):  # type: (str) -> None
         """ Save the calendar instance to a file """
         data = self.cal.to_ical()
-        with open(ical_location, 'w', encoding="utf-8", newline='') as ical_file:
+        with open(ical_location, 'w', encoding="utf-8", newline='') \
+                as ical_file:
             ical_file.write(data.decode('utf-8'))
 
     def save_csv(self, csv_location):  # type: (str) -> None
         """ Save the csv to a file """
-        with open(csv_location, 'w', encoding="utf-8", newline='') as csv_handle:
+        with open(csv_location, 'w', encoding="utf-8", newline='') \
+                as csv_handle:
             writer = csv.writer(csv_handle)
             for row in self.csv_data:
                 writer.writerow(row)
