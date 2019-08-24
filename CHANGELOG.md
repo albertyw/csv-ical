@@ -1,6 +1,14 @@
 Changelog
 =========
 
+v1.0.5
+------
+
+ - Fix issue with utf-8 encoding and newlines
+ - Fix support for python 2
+ - Update dependencies
+
+
 v1.0.4
 ------
 
