@@ -1,6 +1,13 @@
 Changelog
 =========
 
+v2.0.0
+------
+
+ - Remove python 2 support
+ - Simplify code
+
+
 v1.0.5
 ------
 
