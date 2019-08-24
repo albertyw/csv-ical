@@ -39,13 +39,10 @@ setup(
 
         'License :: OSI Approved :: MIT License',
 
-        'Programming Language :: Python :: 2',
-        'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.3',
-        'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7',
     ],
 
     keywords='',
@@ -54,8 +51,6 @@ setup(
 
     install_requires=[
         'icalendar>=4.0.1,<5.0.0',
-        'typing>=3.7.0,<4.0.0',
-        'unicodecsv>=0.14.1,<0.15.0',
     ],
     tests_require=[
         'syspath>=1.0.0,<2.0.0',
