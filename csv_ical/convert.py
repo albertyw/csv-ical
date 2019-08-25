@@ -9,7 +9,7 @@ import csv
 
 
 DEFAULT_CONFIG = {
-    'HEADER_COLUMNS_TO_SKIP':  0,
+    'HEADER_ROWS_TO_SKIP':  0,
 
     # The variables below refer to the column indexes in the CSV
     'CSV_NAME': 0,
@@ -49,7 +49,7 @@ class Convert():
         with open(csv_location, 'r', encoding='utf-8') as csv_file:
             csv_reader = csv.reader(csv_file)
             self.csv_data = list(csv_reader)
-        self.csv_data = self.csv_data[csv_configs['HEADER_COLUMNS_TO_SKIP']:]
+        self.csv_data = self.csv_data[csv_configs['HEADER_ROWS_TO_SKIP']:]
         return self.csv_data
 
     def make_ical(self, csv_configs=None):

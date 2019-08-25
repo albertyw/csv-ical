@@ -11,7 +11,7 @@ EXAMPLE_DIR = os.path.join(get_git_root(), 'examples')
 EXAMPLE_ICS = os.path.join(EXAMPLE_DIR, 'arrive.ics')
 EXAMPLE_CSV = os.path.join(EXAMPLE_DIR, 'BostonCruiseTerminalSchedule.csv')
 CSV_CONFIGS = {
-    'HEADER_COLUMNS_TO_SKIP': 2,
+    'HEADER_ROWS_TO_SKIP': 2,
     'CSV_NAME': 3,
     'CSV_START_DATE': 7,
     'CSV_END_DATE': 8,

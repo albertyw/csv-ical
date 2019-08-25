@@ -11,7 +11,7 @@ convert = Convert()
 csv_file_location = 'examples/BostonCruiseTerminalSchedule.csv'
 ical_file_location = 'examples/arrive.ics'
 csv_configs = {
-    'HEADER_COLUMNS_TO_SKIP': 2,
+    'HEADER_ROWS_TO_SKIP': 2,
     'CSV_NAME': 3,
     'CSV_START_DATE': 7,
     'CSV_END_DATE': 8,
