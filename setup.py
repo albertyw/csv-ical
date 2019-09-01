@@ -49,6 +49,7 @@ setup(
 
     packages=find_packages(exclude=["tests"]),
 
+    python_requires='>=3.5',
     install_requires=[
         'icalendar>=4.0.1,<5.0.0',
     ],
