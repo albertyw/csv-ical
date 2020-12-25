@@ -1,5 +1,5 @@
 # Testing
-coverage==4.5.4                  # Test coverage
-flake8==3.7.8                    # Python linting
-mypy==0.720                      # Static typing
-typing==3.7.4.1                  # Type hints
+coverage==5.3.1                  # Test coverage
+flake8==3.8.4                    # Python linting
+mypy==0.790                      # Static typing
+typing==3.7.4.3                  # Type hints
