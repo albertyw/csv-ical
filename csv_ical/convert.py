@@ -72,10 +72,16 @@ class Convert():
         for event in self.cal.subcomponents:
             if event.name != 'VEVENT':
                 continue
+            dtstart = ''
+            if event.get('DTSTART'):
+                dtstart = event.get('DTSTART').dt
+            dtend = ''
+            if event.get('DTEND'):
+                dtend = event.get('DTEND').dt
             row = [
                 event.get('SUMMARY'),
-                event.get('DTSTART').dt,
-                event.get('DTEND').dt,
+                dtstart,
+                dtend,
                 event.get('DESCRIPTION'),
                 event.get('LOCATION'),
             ]

@@ -62,6 +62,18 @@ class TestConvert(unittest.TestCase):
         self.convert.make_csv()
         self.assertNotEqual(self.convert.csv_data, [])
 
+    def test_make_csv_no_dtstart(self):
+        self.convert.read_ical(EXAMPLE_ICS)
+        del self.convert.cal.subcomponents[0]['DTSTART']
+        self.convert.make_csv()
+        self.assertEqual(self.convert.csv_data[0][1], '')
+
+    def test_make_csv_no_dtend(self):
+        self.convert.read_ical(EXAMPLE_ICS)
+        del self.convert.cal.subcomponents[0]['DTEND']
+        self.convert.make_csv()
+        self.assertEqual(self.convert.csv_data[0][2], '')
+
     def test_save_ical(self):
         self.convert.read_ical(EXAMPLE_ICS)
         with tempfile.NamedTemporaryFile() as temp:
