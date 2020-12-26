@@ -1,6 +1,13 @@
 Changelog
 =========
 
+v2.0.1
+------
+
+ - Support parsing events with no `DSTART` or `DTEND` properties
+ - Update dependencies
+
+
 v2.0.0
 ------
 
