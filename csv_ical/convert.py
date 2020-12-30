@@ -3,9 +3,12 @@ This file reads the CSV file and saves an ical file.
 There are a bunch of configurable variables
 """
 
-from icalendar import Calendar, Event
-from typing import Dict, List  # NOQA
 import csv
+from platform import uname
+from typing import Dict, List  # NOQA
+from uuid import uuid4
+
+from icalendar import Calendar, Event
 
 
 DEFAULT_CONFIG = {
@@ -64,6 +67,7 @@ class Convert():
             event.add('dtend', row[csv_configs['CSV_END_DATE']])
             event.add('description', row[csv_configs['CSV_DESCRIPTION']])
             event.add('location', row[csv_configs['CSV_LOCATION']])
+            event.add('uid', uuid4().hex + '@' + uname().node)
             self.cal.add_component(event)
         return self.cal
 
