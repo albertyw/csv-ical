@@ -6,7 +6,7 @@ There are a bunch of configurable variables
 import csv
 import datetime
 from platform import uname
-from typing import Dict, List  # NOQA
+from typing import Dict, List
 from uuid import uuid4
 
 from icalendar import Calendar, Event
