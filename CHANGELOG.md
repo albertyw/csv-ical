@@ -1,6 +1,13 @@
 Changelog
 =========
 
+v2.0.2
+------
+
+ - Switched to PEP-526 type hints (this removes support for python versions less than 3.5)
+ - Add `DTSTAMP` and `uid` fields into output iCal
+
+
 v2.0.1
 ------
 
