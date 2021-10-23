@@ -17,7 +17,7 @@ steps:
       - flake8
       - mypy . --ignore-missing-imports
       - cc-test-reporter before-build
-      - coverage run -m unittest
+      - coverage run setup.py test
       - exitcode="$?"
       - coverage report -m
       - coverage xml
