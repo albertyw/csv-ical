@@ -1,0 +1,39 @@
+kind: pipeline
+type: docker
+name: test
+
+volumes:
+  - name: pypirc
+    host:
+      path: /home/albertyw/.ssh/other/pypirc
+
+steps:
+  - name: Test Python
+    image: python:3.9
+    commands:
+      - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > "${HOME}/bin/cc-test-reporter"
+      - chmod +x "${HOME}/bin/cc-test-reporter"
+      - pip install -r requirements-test.txt
+      - flake8
+      - mypy . --ignore-missing-imports
+      - cc-test-reporter before-build
+      - coverage run setup.py test
+      - exitcode="$?"
+      - coverage report -m
+      - coverage xml
+      - cc-test-reporter after-build --exit-code "$exitcode"
+    environment:
+      CC_TEST_REPORTER_ID: 2baac9a046cac4e8790932772e1c9954ed0d6786e55a011f32dcc30da97781a1
+
+  - name: Upload Python
+    image: python:3.9
+    commands:
+      - pip install twine
+      - python setup.py sdist bdist_wheel
+      - twine upload dist/*
+    volumes:
+      - name: pypirc
+        path: /root/.pypirc
+    when:
+      event:
+        - tag
