@@ -26,10 +26,10 @@ Development
 .. code:: bash
 
     pip install -r requirements-test.txt
-    mypy csv_ical/convert.py --ignore-missing-imports
-    coverage run setup.py test
-    coverage report -m
     flake8
+    mypy . --ignore-missing-imports
+    coverage run -m unittest
+    coverage report -m
 
 Publishing
 ----------
