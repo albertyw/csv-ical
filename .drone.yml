@@ -13,11 +13,12 @@ steps:
     commands:
       - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > "${HOME}/bin/cc-test-reporter"
       - chmod +x "${HOME}/bin/cc-test-reporter"
+      - python setup.py develop
       - pip install -r requirements-test.txt
       - flake8
       - mypy . --ignore-missing-imports
       - cc-test-reporter before-build
-      - coverage run setup.py test
+      - coverage run -m unittest
       - exitcode="$?"
       - coverage report -m
       - coverage xml
