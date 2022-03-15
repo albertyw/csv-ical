@@ -9,7 +9,7 @@ from typing import Dict
 
 # Get the long description from the README file
 here = path.abspath(path.dirname(__file__))
-with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
+with open(path.join(here, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
 
 about: Dict[str, str] = {}
