@@ -5,8 +5,9 @@ There are a bunch of configurable variables
 
 import csv
 import datetime
+from pathlib import Path
 from platform import uname
-from typing import Dict, List
+from typing import Any, Dict, List, Optional, Union
 from uuid import uuid4
 
 from icalendar import Calendar, Event
@@ -25,13 +26,13 @@ DEFAULT_CONFIG = {
 
 
 class Convert():
-    def __init__(self):
-        self.csv_data: List[List[str]] = []
+    def __init__(self) -> None:
+        self.csv_data: List[List[Any]] = []
         self.cal: Calendar = None
 
     def _generate_configs_from_default(
         self,
-        overrides: Dict[str, int] = None,
+        overrides: Optional[Dict[str, int]] = None,
     ) -> Dict[str, int]:
         """ Generate configs by inheriting from defaults """
         config = DEFAULT_CONFIG.copy()
@@ -41,7 +42,7 @@ class Convert():
             config[k] = v
         return config
 
-    def read_ical(self, ical_file_location: str) -> Calendar:
+    def read_ical(self, ical_file_location: Union[str, Path]) -> Calendar:
         """ Read the ical file """
         with open(ical_file_location, 'r', encoding='utf-8') as ical_file:
             data = ical_file.read()
@@ -50,9 +51,9 @@ class Convert():
 
     def read_csv(
         self,
-        csv_location: str,
-        csv_configs: Dict[str, int] = None
-    ) -> List[List[str]]:
+        csv_location: Union[str, Path],
+        csv_configs: Optional[Dict[str, int]] = None
+    ) -> List[List[Any]]:
         """ Read the csv file """
         csv_configs = self._generate_configs_from_default(csv_configs)
         with open(csv_location, 'r', encoding='utf-8') as csv_file:
@@ -61,7 +62,10 @@ class Convert():
         self.csv_data = self.csv_data[csv_configs['HEADER_ROWS_TO_SKIP']:]
         return self.csv_data
 
-    def make_ical(self, csv_configs: Dict[str, int] = None) -> Calendar:
+    def make_ical(
+        self,
+        csv_configs: Optional[Dict[str, int]] = None,
+    ) -> Calendar:
         """ Make iCal entries """
         csv_configs = self._generate_configs_from_default(csv_configs)
         self.cal = Calendar()
