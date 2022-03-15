@@ -31,11 +31,3 @@ mypy . --ignore-missing-imports
 coverage run -m unittest
 coverage report -m
 ```
-
-## Publishing
-
-```bash
-pip install twine
-python setup.py sdist bdist_wheel
-twine upload dist/*
-```
