@@ -6,7 +6,7 @@ There are a bunch of configurable variables
 import csv
 import datetime
 from platform import uname
-from typing import Dict, List
+from typing import Dict, List, Optional
 from uuid import uuid4
 
 from icalendar import Calendar, Event
@@ -25,13 +25,13 @@ DEFAULT_CONFIG = {
 
 
 class Convert():
-    def __init__(self):
+    def __init__(self) -> None:
         self.csv_data: List[List[str]] = []
         self.cal: Calendar = None
 
     def _generate_configs_from_default(
         self,
-        overrides: Dict[str, int] = None,
+        overrides: Optional[Dict[str, int]] = None,
     ) -> Dict[str, int]:
         """ Generate configs by inheriting from defaults """
         config = DEFAULT_CONFIG.copy()
@@ -51,7 +51,7 @@ class Convert():
     def read_csv(
         self,
         csv_location: str,
-        csv_configs: Dict[str, int] = None
+        csv_configs: Optional[Dict[str, int]] = None
     ) -> List[List[str]]:
         """ Read the csv file """
         csv_configs = self._generate_configs_from_default(csv_configs)
@@ -61,7 +61,10 @@ class Convert():
         self.csv_data = self.csv_data[csv_configs['HEADER_ROWS_TO_SKIP']:]
         return self.csv_data
 
-    def make_ical(self, csv_configs: Dict[str, int] = None) -> Calendar:
+    def make_ical(
+        self,
+        csv_configs: Optional[Dict[str, int]] = None,
+    ) -> Calendar:
         """ Make iCal entries """
         csv_configs = self._generate_configs_from_default(csv_configs)
         self.cal = Calendar()
