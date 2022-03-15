@@ -1,6 +1,15 @@
 Changelog
 =========
 
+v2.0.3
+------
+
+ - Add support for python 3.10 and drop support for python 3.5 and 3.6 (though it should still work)
+ - Switch to Drone CI
+ - Clean up testing and examples
+ - Update dependencies
+
+
 v2.0.2
 ------
 
