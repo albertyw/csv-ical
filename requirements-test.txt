@@ -2,4 +2,4 @@
 coverage==6.3.2                  # Test coverage
 flake8==4.0.1                    # Python linting
 mypy==0.941                      # Static typing
-syspath==1.1.0                   # Manipulating python paths
+syspath==3.0.0                   # Manipulating python paths
