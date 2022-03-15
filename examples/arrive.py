@@ -3,6 +3,7 @@ Example for converting a CSV file into an iCal file
 """
 
 from datetime import datetime, timedelta
+from typing import Any, List
 
 from csv_ical import Convert
 
@@ -22,7 +23,7 @@ csv_configs = {
 convert.read_csv(csv_file_location, csv_configs)
 i = 0
 while i < len(convert.csv_data):
-    row = convert.csv_data[i]
+    row: List[Any] = convert.csv_data[i]
     start_date = row[2] + '-'+row[csv_configs['CSV_START_DATE']]
     try:
         row[csv_configs['CSV_START_DATE']] = datetime.strptime(
