@@ -1,5 +1,4 @@
 import datetime
-import os
 import tempfile
 import unittest
 
@@ -7,9 +6,9 @@ from syspath import get_git_root
 
 from csv_ical import convert
 
-EXAMPLE_DIR = os.path.join(get_git_root(), 'examples')
-EXAMPLE_ICS = os.path.join(EXAMPLE_DIR, 'arrive.ics')
-EXAMPLE_CSV = os.path.join(EXAMPLE_DIR, 'BostonCruiseTerminalSchedule.csv')
+EXAMPLE_DIR = get_git_root() / 'examples'
+EXAMPLE_ICS = EXAMPLE_DIR / 'arrive.ics'
+EXAMPLE_CSV = EXAMPLE_DIR / 'BostonCruiseTerminalSchedule.csv'
 CSV_CONFIGS = {
     'HEADER_ROWS_TO_SKIP': 2,
     'CSV_NAME': 3,
