@@ -1,6 +1,13 @@
 Changelog
 =========
 
+v2.0.4
+------
+
+ - Add full type annotations and add strict mypy typing
+ - Switch README to markdown
+
+
 v2.0.3
 ------
 
