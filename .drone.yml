@@ -23,11 +23,15 @@ steps:
       - coverage report -m
       - coverage xml
       - cc-test-reporter after-build --exit-code "$exitcode"
+    environment:
+      CC_TEST_REPORTER_ID: 2baac9a046cac4e8790932772e1c9954ed0d6786e55a011f32dcc30da97781a1
+
+  - name: Package Python
+    image: python:3.10
+    commands:
       - pip install twine
       - python setup.py sdist bdist_wheel
       - twine check --strict dist/*
-    environment:
-      CC_TEST_REPORTER_ID: 2baac9a046cac4e8790932772e1c9954ed0d6786e55a011f32dcc30da97781a1
 
   - name: Upload Python
     image: python:3.10
