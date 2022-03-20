@@ -16,7 +16,7 @@ steps:
       - python setup.py develop
       - pip install -r requirements-test.txt
       - flake8
-      - mypy . --strict --ignore-missing-imports
+      - mypy . --strict --ignore-missing-imports --exclude build
       - cc-test-reporter before-build
       - coverage run -m unittest
       - exitcode="$?"
