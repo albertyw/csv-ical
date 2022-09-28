@@ -4,5 +4,5 @@ flake8==5.0.4                    # Python linting
 syspath==3.0.0                   # Manipulating python paths
 
 # Types
-mypy==0.941                      # Static typing
+mypy==0.981                      # Static typing
 types-setuptools==57.4.10        # Library setubs for setuptools
