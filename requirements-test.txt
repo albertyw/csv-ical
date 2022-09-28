@@ -1,8 +1,8 @@
 # Testing
-coverage==6.3.2                  # Test coverage
-flake8==4.0.1                    # Python linting
-syspath==3.0.0                   # Manipulating python paths
+coverage==6.4.4                  # Test coverage
+flake8==5.0.4                    # Python linting
+syspath==3.0.1                   # Manipulating python paths
 
 # Types
-mypy==0.941                      # Static typing
-types-setuptools==57.4.10        # Library setubs for setuptools
+mypy==0.981                      # Static typing
+types-setuptools==65.3.0         # Library setubs for setuptools
