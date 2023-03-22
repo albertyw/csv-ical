@@ -2,11 +2,6 @@ kind: pipeline
 type: docker
 name: test
 
-volumes:
-  - name: pypirc
-    host:
-      path: /home/albertyw/.ssh/other/pypirc
-
 steps:
   - name: Test Python
     image: python:3.11
@@ -37,14 +32,16 @@ steps:
     depends_on:
       - Test Python
       - Test Python Packaging
+    environment:
+      TWINE_USERNAME:
+        from_secret: twine_username
+      TWINE_PASSWORD:
+        from_secret: twine_password
     image: python:3.11
     commands:
       - pip install twine
       - python setup.py sdist bdist_wheel
       - twine upload dist/*
-    volumes:
-      - name: pypirc
-        path: /root/.pypirc
     when:
       event:
         - tag
