@@ -1,5 +1,5 @@
 # Testing
-coverage==6.4.4                  # Test coverage
+coverage==7.2.5                  # Test coverage
 flake8==5.0.4                    # Python linting
 syspath==3.0.1                   # Manipulating python paths
 
