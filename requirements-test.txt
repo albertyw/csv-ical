@@ -5,4 +5,4 @@ syspath==3.0.2                   # Manipulating python paths
 
 # Types
 mypy==1.2.0                      # Static typing
-types-setuptools==65.3.0         # Library setubs for setuptools
+types-setuptools==67.7.0.1       # Library setubs for setuptools
