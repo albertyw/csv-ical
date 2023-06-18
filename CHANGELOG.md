@@ -1,6 +1,14 @@
 Changelog
 =========
 
+v2.0.5
+------
+
+ - Add support for python 3.11
+ - Dependency updates
+ - Updates to python publishing
+
+
 v2.0.4
 ------
 
