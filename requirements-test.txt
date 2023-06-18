@@ -1,6 +1,6 @@
 # Testing
 coverage==7.2.5                  # Test coverage
-flake8==6.0.0                    # Python linting
+ruff==0.0.272                    # Python linting
 syspath==3.0.2                   # Manipulating python paths
 
 # Types
