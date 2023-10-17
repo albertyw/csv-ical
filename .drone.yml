@@ -22,7 +22,7 @@ steps:
       CC_TEST_REPORTER_ID: 2baac9a046cac4e8790932772e1c9954ed0d6786e55a011f32dcc30da97781a1
 
   - name: Test Python Packaging
-    image: python:3.11
+    image: python:3.12
     commands:
       - pip install twine
       - python setup.py sdist bdist_wheel
