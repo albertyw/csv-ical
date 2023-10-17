@@ -4,5 +4,5 @@ ruff==0.0.280                    # Python linting
 syspath==3.0.2                   # Manipulating python paths
 
 # Types
-mypy==1.4.1                      # Static typing
+mypy==1.6.0                      # Static typing
 types-setuptools==68.0.0.3       # Library setubs for setuptools
