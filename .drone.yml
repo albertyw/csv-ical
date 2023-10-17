@@ -37,7 +37,7 @@ steps:
         from_secret: twine_username
       TWINE_PASSWORD:
         from_secret: twine_password
-    image: python:3.11
+    image: python:3.12
     commands:
       - pip install twine
       - python setup.py sdist bdist_wheel
