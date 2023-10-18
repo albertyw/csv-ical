@@ -1,6 +1,13 @@
 Changelog
 =========
 
+v2.0.6
+------
+
+ - Switch setup.py to pyproject
+ - Update dependencies
+
+
 v2.0.5
 ------
 
