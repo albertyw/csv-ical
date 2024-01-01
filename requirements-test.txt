@@ -1,5 +1,5 @@
 # Testing
-coverage==7.3.2                  # Test coverage
+coverage==7.4.0                  # Test coverage
 ruff==0.1.0                      # Python linting
 syspath==3.0.3                   # Manipulating python paths
 
