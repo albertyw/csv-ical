@@ -22,6 +22,9 @@ DEFAULT_CONFIG = {
     'CSV_END_DATE': 1,
     'CSV_DESCRIPTION': 2,
     'CSV_LOCATION': 3,
+	
+	# Delimiter used in CSV file
+	'CSV_DELIMITER': ',',
 }
 
 
@@ -57,7 +60,7 @@ class Convert():
         """ Read the csv file """
         csv_configs = self._generate_configs_from_default(csv_configs)
         with open(csv_location, 'r', encoding='utf-8') as csv_file:
-            csv_reader = csv.reader(csv_file)
+            csv_reader = csv.reader(csv_file, delimiter=csv_configs['CSV_DELIMITER'])
             self.csv_data = list(csv_reader)
         self.csv_data = self.csv_data[csv_configs['HEADER_ROWS_TO_SKIP']:]
         return self.csv_data
@@ -108,9 +111,13 @@ class Convert():
         with open(ical_location, 'wb') as ical_file:
             ical_file.write(data)
 
-    def save_csv(self, csv_location: str) -> None:
+    def save_csv(
+		self,
+		csv_location: str,
+		csv_delimiter: str = ','
+	) -> None:
         """ Save the csv to a file """
         with open(csv_location, 'w', encoding='utf-8') as csv_handle:
-            writer = csv.writer(csv_handle)
+            writer = csv.writer(csv_handle, delimiter=csv_delimiter)
             for row in self.csv_data:
                 writer.writerow([r.strip() for r in row])
