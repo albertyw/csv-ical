@@ -5,7 +5,6 @@
 ![PyPI - License](https://img.shields.io/pypi/l/csv-ical)
 
 [![Build Status](https://drone.albertyw.com/api/badges/albertyw/csv-ical/status.svg)](https://drone.albertyw.com/albertyw/csv-ical)
-[![Dependency Status](https://pyup.io/repos/github/albertyw/csv-ical/shield.svg)](https://pyup.io/repos/github/albertyw/csv-ical/)
 [![Code Climate](https://codeclimate.com/github/albertyw/csv-ical/badges/gpa.svg)](https://codeclimate.com/github/albertyw/csv-ical)
 [![Test Coverage](https://codeclimate.com/github/albertyw/csv-ical/badges/coverage.svg)](https://codeclimate.com/github/albertyw/csv-ical/coverage)
 
