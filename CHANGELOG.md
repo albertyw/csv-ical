@@ -1,6 +1,14 @@
 Changelog
 =========
 
+v2.1.1
+------
+
+ - Drop support for python 3.7
+ - Add `Config` and `ConfigOverride` types
+ - Various cleanup and fixes
+
+
 v2.1.0
 ------
 
