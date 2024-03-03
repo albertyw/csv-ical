@@ -53,9 +53,6 @@ lint.select = ["E", "F", "B"]
 [tool.mypy]
 strict = true
 ignore_missing_imports = true
-exclude = [
-    "build",
-]
 
 [tool.coverage.run]
 source = [
