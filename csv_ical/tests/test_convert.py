@@ -9,13 +9,14 @@ from csv_ical import convert
 EXAMPLE_DIR = get_git_root() / 'examples'
 EXAMPLE_ICS = EXAMPLE_DIR / 'arrive.ics'
 EXAMPLE_CSV = EXAMPLE_DIR / 'BostonCruiseTerminalSchedule.csv'
-CSV_CONFIGS = {
+CSV_CONFIGS: convert.Config = {
     'HEADER_ROWS_TO_SKIP': 2,
     'CSV_NAME': 3,
     'CSV_START_DATE': 7,
     'CSV_END_DATE': 8,
     'CSV_DESCRIPTION': 6,
     'CSV_LOCATION': 9,
+    'CSV_DELIMITER': ',',
 }
 
 
@@ -28,9 +29,9 @@ class TestConvert(unittest.TestCase):
         self.assertEqual(config['CSV_NAME'], 0)
 
     def test_generate_configs_override(self) -> None:
-        overrides = {
+        overrides: convert.ConfigOverrides = {
             'CSV_NAME': 5,
-        }
+        } # type: ignore
         config = self.convert._generate_configs_from_default(overrides)
         self.assertEqual(config['CSV_NAME'], 5)
 

@@ -7,13 +7,23 @@ import csv
 import datetime
 from pathlib import Path
 from platform import uname
-from typing import Any, Dict, List, Optional, Union
+from typing import Any, List, Optional, TypedDict, Union
 from uuid import uuid4
 
 from icalendar import Calendar, Event
 
 
-DEFAULT_CONFIG = {
+class Config(TypedDict):
+    HEADER_ROWS_TO_SKIP: int
+    CSV_NAME: int
+    CSV_START_DATE: int
+    CSV_END_DATE: int
+    CSV_DESCRIPTION: int
+    CSV_LOCATION: int
+    CSV_DELIMITER: str
+class ConfigOverrides(Config, total=False):
+    pass
+DEFAULT_CONFIG: Config = {
     'HEADER_ROWS_TO_SKIP':  0,
 
     # The variables below refer to the column indexes in the CSV
@@ -36,14 +46,15 @@ class Convert():
 
     def _generate_configs_from_default(
         self,
-        overrides: Optional[Dict[str, int]] = None,
-    ) -> Dict[str, int]:
+        overrides: Optional[ConfigOverrides] = None,
+    ) -> Config:
         """ Generate configs by inheriting from defaults """
         config = DEFAULT_CONFIG.copy()
-        if not overrides:
-            overrides = {}
-        for k, v in overrides.items():
-            config[k] = v
+        non_optional_overrides: ConfigOverrides = {}  # type: ignore
+        if overrides:
+            non_optional_overrides = overrides
+        for k, v in non_optional_overrides.items():
+            config[k] = v  # type: ignore
         return config
 
     def read_ical(self, ical_file_location: Union[str, Path]) -> Calendar:
@@ -56,7 +67,7 @@ class Convert():
     def read_csv(
         self,
         csv_location: Union[str, Path],
-        csv_configs: Optional[Dict[str, int]] = None
+        csv_configs: Optional[Config] = None
     ) -> List[List[Any]]:
         """ Read the csv file """
         csv_configs = self._generate_configs_from_default(csv_configs)
@@ -68,7 +79,7 @@ class Convert():
 
     def make_ical(
         self,
-        csv_configs: Optional[Dict[str, int]] = None,
+        csv_configs: Optional[Config] = None,
     ) -> Calendar:
         """ Make iCal entries """
         csv_configs = self._generate_configs_from_default(csv_configs)
