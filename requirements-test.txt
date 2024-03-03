@@ -1,7 +1,0 @@
-# Testing
-coverage==7.4.0                  # Test coverage
-ruff==0.1.9                      # Python linting
-syspath==3.0.5                   # Manipulating python paths
-
-# Types
-mypy==1.8.0                      # Static typing
