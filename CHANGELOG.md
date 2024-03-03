@@ -1,6 +1,14 @@
 Changelog
 =========
 
+v2.1.0
+------
+
+ - Allow customizable csv delimiters
+ - Packaging updates
+ - Update dependencies
+
+
 v2.0.6
 ------
 
