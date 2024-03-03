@@ -18,7 +18,7 @@ csv_configs = {
     'CSV_END_DATE': 8,
     'CSV_DESCRIPTION': 6,
     'CSV_LOCATION': 9,
-	'CSV_DELIMITER': ','
+    'CSV_DELIMITER': ','
 }
 
 convert.read_csv(csv_file_location, csv_configs)

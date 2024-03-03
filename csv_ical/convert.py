@@ -22,10 +22,11 @@ DEFAULT_CONFIG = {
     'CSV_END_DATE': 1,
     'CSV_DESCRIPTION': 2,
     'CSV_LOCATION': 3,
-	
-	# Delimiter used in CSV file
-	'CSV_DELIMITER': ',',
+
+    # Delimiter used in CSV file
+    'CSV_DELIMITER': ',',
 }
+
 
 
 class Convert():
@@ -112,10 +113,10 @@ class Convert():
             ical_file.write(data)
 
     def save_csv(
-		self,
-		csv_location: str,
-		csv_delimiter: str = ','
-	) -> None:
+        self,
+        csv_location: str,
+        csv_delimiter: str = ','
+    ) -> None:
         """ Save the csv to a file """
         with open(csv_location, 'w', encoding='utf-8') as csv_handle:
             writer = csv.writer(csv_handle, delimiter=csv_delimiter)
