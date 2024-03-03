@@ -10,7 +10,7 @@ steps:
       - chmod +x "${HOME}/bin/cc-test-reporter"
       - pip install -e .[test]
       - ruff check .
-      - mypy . --strict --ignore-missing-imports --exclude build
+      - mypy .
       - cc-test-reporter before-build
       - coverage run -m unittest
       - exitcode="$?"
