@@ -67,7 +67,7 @@ class Convert():
     def read_csv(
         self,
         csv_location: Union[str, Path],
-        csv_configs: Optional[Config] = None
+        csv_configs: Optional[Config] = None,
     ) -> List[List[Any]]:
         """ Read the csv file """
         csv_configs = self._generate_configs_from_default(csv_configs)
@@ -126,7 +126,7 @@ class Convert():
     def save_csv(
         self,
         csv_location: str,
-        csv_delimiter: str = ','
+        csv_delimiter: str = ',',
     ) -> None:
         """ Save the csv to a file """
         with open(csv_location, 'w', encoding='utf-8') as csv_handle:

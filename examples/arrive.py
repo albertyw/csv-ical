@@ -18,7 +18,7 @@ csv_configs: Config = {
     'CSV_END_DATE': 8,
     'CSV_DESCRIPTION': 6,
     'CSV_LOCATION': 9,
-    'CSV_DELIMITER': ','
+    'CSV_DELIMITER': ',',
 }
 
 convert.read_csv(csv_file_location, csv_configs)
@@ -28,7 +28,7 @@ while i < len(convert.csv_data):
     start_date = row[2] + '-'+row[csv_configs['CSV_START_DATE']]
     try:
         row[csv_configs['CSV_START_DATE']] = datetime.strptime(
-            start_date, '%m/%d/%y-%H:%M'
+            start_date, '%m/%d/%y-%H:%M',
         )
         row[csv_configs['CSV_END_DATE']] = \
             row[csv_configs['CSV_START_DATE']]+timedelta(hours=1)
