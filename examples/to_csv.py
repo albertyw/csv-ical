@@ -5,8 +5,8 @@ Example conversion of ical to csv
 from csv_ical import Convert
 
 
-SAVE_LOCATION = 'examples/arrive.ics'
-CSV_FILE_LOCATION = 'examples/BostonCruiseTerminalSchedule.csv'
+SAVE_LOCATION = 'examples/example.ics'
+CSV_FILE_LOCATION = 'examples/example.csv'
 
 csv_delimiter = ','
 
