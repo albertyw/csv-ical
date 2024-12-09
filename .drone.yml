@@ -36,7 +36,7 @@ steps:
         from_secret: twine_username
       TWINE_PASSWORD:
         from_secret: twine_password
-    image: python:3.12
+    image: python:3.13
     commands:
       - pip install build twine
       - python -m build
