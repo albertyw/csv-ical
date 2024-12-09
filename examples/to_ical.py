@@ -8,8 +8,8 @@ from csv_ical import Config, Convert
 
 
 convert = Convert()
-csv_file_location = 'examples/BostonCruiseTerminalSchedule.csv'
-ical_file_location = 'examples/arrive.ics'
+csv_file_location = 'examples/example.csv'
+ical_file_location = 'examples/example.ics'
 csv_configs: Config = {
     'HEADER_ROWS_TO_SKIP': 0,
     'CSV_NAME': 0,

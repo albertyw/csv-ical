@@ -7,8 +7,8 @@ from syspath import get_git_root
 from csv_ical import convert
 
 EXAMPLE_DIR = get_git_root() / 'examples'
-EXAMPLE_ICS = EXAMPLE_DIR / 'arrive.ics'
-EXAMPLE_CSV = EXAMPLE_DIR / 'BostonCruiseTerminalSchedule.csv'
+EXAMPLE_ICS = EXAMPLE_DIR / 'example.ics'
+EXAMPLE_CSV = EXAMPLE_DIR / 'example.csv'
 CSV_CONFIGS: convert.Config = {
     'HEADER_ROWS_TO_SKIP': 0,
     'CSV_NAME': 0,
