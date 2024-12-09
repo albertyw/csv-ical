@@ -10,12 +10,12 @@ EXAMPLE_DIR = get_git_root() / 'examples'
 EXAMPLE_ICS = EXAMPLE_DIR / 'arrive.ics'
 EXAMPLE_CSV = EXAMPLE_DIR / 'BostonCruiseTerminalSchedule.csv'
 CSV_CONFIGS: convert.Config = {
-    'HEADER_ROWS_TO_SKIP': 2,
-    'CSV_NAME': 3,
-    'CSV_START_DATE': 7,
-    'CSV_END_DATE': 8,
-    'CSV_DESCRIPTION': 6,
-    'CSV_LOCATION': 9,
+    'HEADER_ROWS_TO_SKIP': 0,
+    'CSV_NAME': 0,
+    'CSV_START_DATE': 1,
+    'CSV_END_DATE': 2,
+    'CSV_DESCRIPTION': 3,
+    'CSV_LOCATION': 4,
     'CSV_DELIMITER': ',',
 }
 
@@ -46,8 +46,8 @@ class TestConvert(unittest.TestCase):
     def test_make_ical(self) -> None:
         self.convert.read_csv(EXAMPLE_CSV)
         self.convert.csv_data = [self.convert.csv_data[0]]
-        self.convert.csv_data[0][7] = datetime.datetime.now()
-        self.convert.csv_data[0][8] = datetime.datetime.now()
+        self.convert.csv_data[0][1] = datetime.datetime.now()
+        self.convert.csv_data[0][2] = datetime.datetime.now()
         self.convert.make_ical(CSV_CONFIGS)
         self.assertTrue(self.convert.cal is not None)
 
