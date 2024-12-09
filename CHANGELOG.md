@@ -1,6 +1,14 @@
 Changelog
 =========
 
+v2.1.2
+------
+
+ - Fix examples not running idempotently
+ - Update dependencies
+ - Fix lint
+
+
 v2.1.1
 ------
 
