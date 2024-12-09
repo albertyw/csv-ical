@@ -22,7 +22,7 @@ classifiers = [
     "Typing :: Typed",
 ]
 dependencies = [
-    "icalendar>=4.0.1,<5.0.0",
+    "icalendar>=5.0.0,<6.0.0",
 ]
 dynamic = ["version", "readme"]
 
