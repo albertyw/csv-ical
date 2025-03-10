@@ -34,7 +34,7 @@ test = [
     "syspath==3.0.6",         # Manipulating python paths
 
     # Types
-    "mypy==1.13.0",           # Static typing
+    "mypy==1.15.0",           # Static typing
 ]
 
 [project.urls]
