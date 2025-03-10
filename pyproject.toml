@@ -29,12 +29,12 @@ dynamic = ["version", "readme"]
 [project.optional-dependencies]
 test = [
     # Testing
-    "coverage==7.6.9",        # Test coverage
-    "ruff==0.8.2",            # Python linting
+    "coverage==7.6.12",       # Test coverage
+    "ruff==0.9.10",           # Python linting
     "syspath==3.0.6",         # Manipulating python paths
 
     # Types
-    "mypy==1.13.0",           # Static typing
+    "mypy==1.15.0",           # Static typing
 ]
 
 [project.urls]
