@@ -8,7 +8,7 @@ import datetime
 from pathlib import Path
 from platform import uname
 from typing import Any, List, Optional, TypedDict, Union
-from uuid import uuid4
+from uuid import uuid4, uuid5
 
 from icalendar import Calendar, Event
 
@@ -86,12 +86,15 @@ class Convert():
         self.cal = Calendar()
         for row in self.csv_data:
             event = Event()
-            event.add('summary', row[csv_configs['CSV_NAME']])
-            event.add('dtstart', row[csv_configs['CSV_START_DATE']])
+            dstart = row[csv_configs['CSV_START_DATE']]
+            summary = row[csv_configs["CSV_NAME"]]
+            location = row[csv_configs["CSV_LOCATION"]]
+            event.add('summary', summary)
+            event.add('dtstart', dstart)
             event.add('dtend', row[csv_configs['CSV_END_DATE']])
             event.add('description', row[csv_configs['CSV_DESCRIPTION']])
-            event.add('location', row[csv_configs['CSV_LOCATION']])
-            event.add('uid', uuid4().hex + '@' + uname().node)
+            event.add('location', location)
+            event.add('uid', uuid5(dstart+location,summary).hex)
             event.add('dtstamp', datetime.datetime.now())
             self.cal.add_component(event)
         return self.cal
