@@ -5,8 +5,8 @@
 ![PyPI - License](https://img.shields.io/pypi/l/csv-ical)
 
 [![Build Status](https://drone.albertyw.com/api/badges/albertyw/csv-ical/status.svg)](https://drone.albertyw.com/albertyw/csv-ical)
-[![Code Climate](https://codeclimate.com/github/albertyw/csv-ical/badges/gpa.svg)](https://codeclimate.com/github/albertyw/csv-ical)
-[![Test Coverage](https://codeclimate.com/github/albertyw/csv-ical/badges/coverage.svg)](https://codeclimate.com/github/albertyw/csv-ical/coverage)
+[![Maintainability](https://qlty.sh/gh/albertyw/projects/csv-ical/maintainability.svg)](https://qlty.sh/gh/albertyw/projects/csv-ical)
+[![Code Coverage](https://qlty.sh/gh/albertyw/projects/csv-ical/coverage.svg)](https://qlty.sh/gh/albertyw/projects/csv-ical)
 
 A simple script to convert data in CSV format to iCal format and vice
 versa.
