@@ -5,16 +5,18 @@ There are a bunch of configurable variables
 
 import csv
 import datetime
+from zoneinfo import ZoneInfo
 from pathlib import Path
 from platform import uname
 from typing import Any, List, Optional, TypedDict, Union
 from uuid import uuid4
 
-from icalendar import Calendar, Event
+from icalendar import Calendar, Event, Timezone
 
 
 class Config(TypedDict):
     HEADER_ROWS_TO_SKIP: int
+    TIMEZONE: str
     CSV_NAME: int
     CSV_START_DATE: int
     CSV_END_DATE: int
@@ -25,7 +27,7 @@ class ConfigOverrides(Config, total=False):
     pass
 DEFAULT_CONFIG: Config = {
     'HEADER_ROWS_TO_SKIP':  0,
-
+    'TIMEZONE': '',
     # The variables below refer to the column indexes in the CSV
     'CSV_NAME': 0,
     'CSV_START_DATE': 1,
@@ -87,6 +89,10 @@ class Convert():
         for row in self.csv_data:
             event = Event()
             event.add('summary', row[csv_configs['CSV_NAME']])
+            if csv_configs['TIMEZONE']:
+               config_tz = ZoneInfo(csv_configs['TIMEZONE'])
+               row[csv_configs['CSV_START_DATE']] = row[csv_configs['CSV_START_DATE']].replace(tzinfo=config_tz)
+               row[csv_configs['CSV_END_DATE']] = row[csv_configs['CSV_END_DATE']].replace(tzinfo=config_tz)
             event.add('dtstart', row[csv_configs['CSV_START_DATE']])
             event.add('dtend', row[csv_configs['CSV_END_DATE']])
             event.add('description', row[csv_configs['CSV_DESCRIPTION']])
@@ -94,6 +100,7 @@ class Convert():
             event.add('uid', uuid4().hex + '@' + uname().node)
             event.add('dtstamp', datetime.datetime.now())
             self.cal.add_component(event)
+        self.cal.add_missing_timezones()        
         return self.cal
 
     def make_csv(self) -> None:
