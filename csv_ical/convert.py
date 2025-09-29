@@ -6,7 +6,6 @@ There are a bunch of configurable variables
 import csv
 import datetime
 from pathlib import Path
-from platform import uname
 from typing import Any, List, Optional, TypedDict, Union
 from uuid import uuid4
 
@@ -91,7 +90,7 @@ class Convert():
             event.add('dtend', row[csv_configs['CSV_END_DATE']])
             event.add('description', row[csv_configs['CSV_DESCRIPTION']])
             event.add('location', row[csv_configs['CSV_LOCATION']])
-            event.add('uid', uuid4().hex + '@' + uname().node)
+            event.add('uid', uuid4().hex)
             event.add('dtstamp', datetime.datetime.now())
             self.cal.add_component(event)
         return self.cal
