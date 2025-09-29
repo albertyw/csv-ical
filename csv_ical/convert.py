@@ -11,7 +11,7 @@ from platform import uname
 from typing import Any, List, Optional, TypedDict, Union
 from uuid import uuid4
 
-from icalendar import Calendar, Event, Timezone
+from icalendar import Calendar, Event
 
 
 class Config(TypedDict):
