@@ -100,7 +100,7 @@ class Convert():
             event.add('uid', uuid4().hex + '@' + uname().node)
             event.add('dtstamp', datetime.datetime.now())
             self.cal.add_component(event)
-        self.cal.add_missing_timezones()        
+        self.cal.add_missing_timezones()
         return self.cal
 
     def make_csv(self) -> None:
