@@ -21,6 +21,16 @@ CSV_CONFIGS: convert.Config = {
 }
 
 
+class TestExample(unittest.TestCase):
+    def test_example_ics_crlf(self) -> None:
+        with open(EXAMPLE_ICS, 'rb') as f:
+            content = f.read()
+        lf_count = content.count(b'\n')
+        crlf_count = content.count(b'\r\n')
+        self.assertGreater(crlf_count, 0)
+        self.assertEqual(lf_count, crlf_count)
+
+
 class TestConvert(unittest.TestCase):
     def setUp(self) -> None:
         self.convert = convert.Convert()
