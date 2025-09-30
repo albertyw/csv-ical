@@ -90,8 +90,10 @@ class Convert():
             event.add('summary', row[csv_configs['CSV_NAME']])
             if csv_configs['TIMEZONE']:
                config_tz = ZoneInfo(csv_configs['TIMEZONE'])
-               row[csv_configs['CSV_START_DATE']] = row[csv_configs['CSV_START_DATE']].replace(tzinfo=config_tz)
-               row[csv_configs['CSV_END_DATE']] = row[csv_configs['CSV_END_DATE']].replace(tzinfo=config_tz)
+               row[csv_configs['CSV_START_DATE']] = row[csv_configs['CSV_START_DATE']].\
+                    replace(tzinfo=config_tz)
+               row[csv_configs['CSV_END_DATE']] = row[csv_configs['CSV_END_DATE']].\
+                   replace(tzinfo=config_tz)
             event.add('dtstart', row[csv_configs['CSV_START_DATE']])
             event.add('dtend', row[csv_configs['CSV_END_DATE']])
             event.add('description', row[csv_configs['CSV_DESCRIPTION']])
