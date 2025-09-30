@@ -40,6 +40,9 @@ test = [
 [project.urls]
 "Homepage" = "https://github.com/albertyw/csv-ical"
 
+[tool.setuptools]
+packages = ["csv_ical"]
+
 [tool.setuptools.dynamic]
 version = {attr = "csv_ical.__version__.__version__"}
 readme = {file = "README.md", content-type="text/markdown"}
