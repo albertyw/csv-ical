@@ -12,6 +12,7 @@ csv_file_location = 'examples/example.csv'
 ical_file_location = 'examples/example.ics'
 csv_configs: Config = {
     'HEADER_ROWS_TO_SKIP': 0,
+    'TIMEZONE': 'Europe/Madrid',
     'CSV_NAME': 0,
     'CSV_START_DATE': 1,
     'CSV_END_DATE': 2,
