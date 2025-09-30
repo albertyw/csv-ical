@@ -1,6 +1,14 @@
 Changelog
 =========
 
+v2.2.0
+------
+
+ - Add a new TIMEZONE configuration
+ - Officially support python 3.13
+ - Update dependencies
+
+
 v2.1.2
 ------
 
