@@ -4,7 +4,7 @@ name: test
 
 steps:
   - name: Test Python
-    image: python:3.13
+    image: python:3.14
     commands:
       - curl https://qlty.sh | sh
       - pip install -e .[test]
