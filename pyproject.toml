@@ -48,8 +48,8 @@ packages = ["csv_ical"]
 version = {attr = "csv_ical.__version__.__version__"}
 readme = {file = "README.md", content-type="text/markdown"}
 
-[options.package_data]
-git_browse = ["py.typed"]
+[tool.setuptools.package-data]
+csv_ical = ["py.typed"]
 
 [tool.ruff]
 lint.select = ["E", "F", "W", "A", "B", "COM", "N", "PLC", "PLE", "PLW"]
