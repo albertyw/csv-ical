@@ -2,6 +2,7 @@ import datetime
 import tempfile
 import unittest
 
+from icalendar import Calendar
 from syspath import get_git_root
 
 from csv_ical import convert
@@ -66,6 +67,48 @@ class TestConvert(unittest.TestCase):
         self.convert.read_ical(EXAMPLE_ICS)
         self.convert.make_csv()
         self.assertNotEqual(self.convert.csv_data, [])
+
+    def test_make_ical_all_day_with_timezone(self) -> None:
+        start = datetime.date(2026, 9, 22)
+        end = datetime.date(2026, 9, 23)
+        self.convert.csv_data = [['All day', start, end, '', '']]
+
+        calendar = self.convert.make_ical(CSV_CONFIGS)
+        parsed = Calendar.from_ical(calendar.to_ical())
+        event = parsed.walk('VEVENT')[0]
+
+        self.assertEqual(event.decoded('DTSTART'), start)
+        self.assertEqual(event.decoded('DTEND'), end)
+        self.assertEqual(event['DTSTART'].params['VALUE'], 'DATE')
+        self.assertEqual(event['DTEND'].params['VALUE'], 'DATE')
+        self.assertNotIn('TZID', event['DTSTART'].params)
+        self.assertNotIn('TZID', event['DTEND'].params)
+        self.assertEqual(parsed.walk('VTIMEZONE'), [])
+
+    def test_make_ical_mixed_date_and_datetime_with_timezone(self) -> None:
+        date_start = datetime.date(2026, 9, 22)
+        date_end = datetime.date(2026, 9, 23)
+        time_start = datetime.datetime(2026, 9, 22, 10, 0)
+        time_end = datetime.datetime(2026, 9, 22, 11, 0)
+        self.convert.csv_data = [
+            ['All day', date_start, date_end, '', ''],
+            ['Timed', time_start, time_end, '', ''],
+        ]
+
+        calendar = self.convert.make_ical(CSV_CONFIGS)
+        parsed = Calendar.from_ical(calendar.to_ical())
+        all_day, timed = parsed.walk('VEVENT')
+
+        self.assertEqual(all_day.decoded('DTSTART'), date_start)
+        self.assertEqual(all_day.decoded('DTEND'), date_end)
+        self.assertEqual(timed['DTSTART'].params['TZID'], 'Europe/Madrid')
+        self.assertEqual(timed['DTEND'].params['TZID'], 'Europe/Madrid')
+        self.assertEqual(timed.decoded('DTSTART').replace(tzinfo=None), time_start)
+        self.assertEqual(timed.decoded('DTEND').replace(tzinfo=None), time_end)
+        self.assertEqual(
+            timed.decoded('DTSTART').utcoffset(), datetime.timedelta(hours=2),
+        )
+        self.assertEqual(len(parsed.walk('VTIMEZONE')), 1)
 
     def test_make_csv_vevent(self) -> None:
         self.convert.read_ical(EXAMPLE_ICS)
