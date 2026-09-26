@@ -40,6 +40,10 @@ test = [
 
 [project.urls]
 "Homepage" = "https://github.com/albertyw/csv-ical"
+"Repository" = "https://github.com/albertyw/csv-ical"
+"Documentation" = "https://github.com/albertyw/csv-ical/blob/master/README.md"
+"Changelog" = "https://github.com/albertyw/csv-ical/blob/master/CHANGELOG.md"
+"Issues" = "https://github.com/albertyw/csv-ical/issues"
 
 [tool.setuptools]
 packages = ["csv_ical"]
