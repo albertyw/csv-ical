@@ -89,11 +89,11 @@ class Convert():
             event = Event()
             event.add('summary', row[csv_configs['CSV_NAME']])
             if csv_configs['TIMEZONE']:
-               config_tz = ZoneInfo(csv_configs['TIMEZONE'])
-               row[csv_configs['CSV_START_DATE']] = row[csv_configs['CSV_START_DATE']].\
-                    replace(tzinfo=config_tz)
-               row[csv_configs['CSV_END_DATE']] = row[csv_configs['CSV_END_DATE']].\
-                   replace(tzinfo=config_tz)
+                config_tz = ZoneInfo(csv_configs['TIMEZONE'])
+                for column in ('CSV_START_DATE', 'CSV_END_DATE'):
+                    value = row[csv_configs[column]]
+                    if isinstance(value, datetime.datetime):
+                        row[csv_configs[column]] = value.replace(tzinfo=config_tz)
             event.add('dtstart', row[csv_configs['CSV_START_DATE']])
             event.add('dtend', row[csv_configs['CSV_END_DATE']])
             event.add('description', row[csv_configs['CSV_DESCRIPTION']])
