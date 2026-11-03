@@ -15,7 +15,8 @@ steps:
       - coverage lcov -o .coverage.lcov
       - ~/.qlty/bin/qlty coverage publish .coverage.lcov --override-commit-sha "$DRONE_COMMIT_SHA" --override-branch "$DRONE_BRANCH" --override-build-id "$DRONE_BUILD_NUMBER"
     environment:
-      QLTY_COVERAGE_TOKEN: qltcp_cB2m71cTAyhOtcdZ
+      QLTY_COVERAGE_TOKEN:
+        from_secret: qlty_coverage_token
 
   - name: Test Python Packaging
     image: python:3.15
