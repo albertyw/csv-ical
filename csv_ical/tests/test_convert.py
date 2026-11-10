@@ -128,6 +128,11 @@ class TestConvert(unittest.TestCase):
         self.convert.make_csv()
         self.assertEqual(self.convert.csv_data[0][2], '')
 
+    def test_make_ical_short_row(self) -> None:
+        self.convert.csv_data = [['only-a-name']]
+        with self.assertRaises(ValueError):
+            self.convert.make_ical()
+
     def test_save_ical(self) -> None:
         self.convert.read_ical(EXAMPLE_ICS)
         with tempfile.NamedTemporaryFile() as temp:

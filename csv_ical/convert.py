@@ -85,7 +85,19 @@ class Convert():
         """ Make iCal entries """
         csv_configs = self._generate_configs_from_default(csv_configs)
         self.cal = Calendar()
-        for row in self.csv_data:
+        required_columns = max(
+            csv_configs['CSV_NAME'],
+            csv_configs['CSV_START_DATE'],
+            csv_configs['CSV_END_DATE'],
+            csv_configs['CSV_DESCRIPTION'],
+            csv_configs['CSV_LOCATION'],
+        )
+        for index, row in enumerate(self.csv_data):
+            if len(row) <= required_columns:
+                raise ValueError(
+                    f"Row {index} has {len(row)} columns, "
+                    f"expected at least {required_columns + 1}: {row!r}",
+                )
             event = Event()
             event.add('summary', row[csv_configs['CSV_NAME']])
             if csv_configs['TIMEZONE']:
