@@ -1,6 +1,17 @@
 Changelog
 =========
 
+v2.2.1 (2026-11-22)
+-------------------
+
+ - Preserve all-day dates with a configured timezone (from @bensynapse)
+ - Officially support python 3.15
+ - Update dependencies
+ - Publish PyPI packages using OIDC
+ - PyPI package metadata updates
+ - CI cleanup
+
+
 v2.2.0 (2025-09-30)
 -------------------
 
