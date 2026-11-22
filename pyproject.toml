@@ -32,7 +32,7 @@ test = [
     # Testing
     "coverage==7.17.4",       # Test coverage
     "ruff==0.17.6",           # Python linting
-    "syspath==3.0.8",         # Manipulating python paths
+    "syspath==3.0.9",         # Manipulating python paths
 
     # Types
     "mypy==2.4.1",            # Static typing
